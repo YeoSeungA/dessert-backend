@@ -1,0 +1,28 @@
+server:
+  # 백엔드 서버가 실행될 포트 (기본은 8080)
+  # 프론트엔드(보통 3000번대)와 충돌을 피하기 위해 변경
+  port: 8080
+
+spring:
+  # 데이터베이스 설정 (H2 In-Memory Database 사용)
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:desertdb;MODE=MySQL;
+    username: sa
+    password:
+
+  # JPA (데이터베이스 ORM) 설정
+  jpa:
+    hibernate:
+      # 애플리케이션 시작 시 자동으로 테이블 생성 (운영 환경에서는 사용하지 않음)
+      ddl-auto: update
+    properties:
+      hibernate:
+        # 콘솔에 SQL을 출력
+        show_sql: true
+        # SQL을 가독성 좋게 포맷
+        format_sql: true
+
+  # 기본 웹 애플리케이션 이름 (로깅에 사용)
+  application:
+    name: desert-backend
